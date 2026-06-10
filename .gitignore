@@ -1,0 +1,69 @@
+# Dependencies
+node_modules/
+
+# Built assets
+assets/vite-manifest.json
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Shopify CLI (local config, not shared)
+shopify.theme.toml
+
+# Development documentation (for contributors, not theme users)
+CLAUDE.md
+docs/
+.plans
+.context/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+.cache/
+.temp/
+
+# Build artifacts - IMPORTANT NOTE
+# The setup script (npm run setup) manages these artifacts based on the
+# deployment strategy you pick during the wizard:
+#   CLI push / "Not sure yet": wraps assets/ and snippets/vite.liquid in a
+#     managed block below (delimited by # >>> VAST setup ... <<< markers).
+#   GitHub integration: removes the managed block (and any legacy bare lines)
+#     so Shopify's GitHub sync can track assets/ and snippets/vite.liquid.
+# Reruns are idempotent — the wizard rewrites or removes its managed block
+# based on the current answer, so it's safe to switch strategies later.
+# Contributors working on VAST can use .git/info/exclude for local-only
+# ignore rules that won't be committed.
+
+# >>> VAST setup: gitignore block <<<
+# Managed by scripts/setup.cjs — safe to delete this block manually.
+assets/
+snippets/vite.liquid
+# >>> end VAST setup <<<
