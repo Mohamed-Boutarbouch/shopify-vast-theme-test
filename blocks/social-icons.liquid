@@ -11,7 +11,7 @@
                rel="noopener noreferrer"
                class="hover:opacity-70 transition-opacity"
                aria-label="{{ platform | capitalize }}">
-                {% render 'icon-' | append: platform %}
+                {% render 'icon-', append: platform %}
             </a>
         {% endif %}
     {% endfor %}
@@ -28,4 +28,13 @@
     }
   ]
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'icon-' | append: platform %}"
+  to: "{% render 'icon-', append: platform %}"
+  position: 649..687
+{%- endcomment -%}

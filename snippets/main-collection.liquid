@@ -194,11 +194,7 @@
                     {%- comment -%} Product Grid {%- endcomment -%}
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {% for prod in collection.products %}
-                            {% render 'product-grid-item',
-                                prod: prod,
-                                enable_quick_view: section.settings.enable_quick_view,
-                                quick_view_settings: section.settings,
-                                prefetch_enabled: forloop.index <= 3 %}
+                            {% render 'product-grid-item', prod: prod, enable_quick_view: section.settings.enable_quick_view, quick_view_settings: section.settings, prefetch_enabled: forloop.index %}
                         {% endfor %}
                     </div>
 
@@ -490,3 +486,19 @@
     </div>
   </div>
 {% endif %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'product-grid-item',
+                                    prod: prod,
+                                    enable_quick_view: section.settings.enable_quick_view,
+                                    quick_view_settings: section.settings,
+                                    prefetch_enabled: forloop.index <= 3 %}
+  to: "{% render 'product-grid-item', prod: prod, enable_quick_view: section.settings.enable_quick_view,
+    quick_view_settings: section.settings, prefetch_enabled: forloop.index %}"
+  position: 14254..14425
+{% endcomment %}

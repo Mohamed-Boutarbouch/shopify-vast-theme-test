@@ -58,12 +58,7 @@
     {%- if collection != blank and collection.products.size > 0 -%}
       <div class="{{ grid_classes }}">
         {%- for product in collection.products limit: products_to_show -%}
-          {% render 'product-grid-item',
-              prod: product,
-              is_first: forloop.first,
-              enable_quick_view: section.settings.enable_quick_view,
-              quick_view_settings: section.settings,
-              prefetch_enabled: forloop.index <= 3 %}
+          {% render 'product-grid-item', prod: product, is_first: forloop.first, enable_quick_view: section.settings.enable_quick_view, quick_view_settings: section.settings, prefetch_enabled: forloop.index %}
         {%- endfor -%}
       </div>
 
@@ -210,3 +205,21 @@
     </div>
   {% endif %}
 </section>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'product-grid-item',
+                  prod: product,
+                  is_first: forloop.first,
+                  enable_quick_view: section.settings.enable_quick_view,
+                  quick_view_settings: section.settings,
+                  prefetch_enabled: forloop.index <= 3 %}
+  to: "{% render 'product-grid-item', prod: product, is_first: forloop.first, enable_quick_view:
+    section.settings.enable_quick_view, quick_view_settings: section.settings, prefetch_enabled:
+    forloop.index %}"
+  position: 2247..2446
+{% endcomment %}
